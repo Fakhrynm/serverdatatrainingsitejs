@@ -1,6 +1,6 @@
 const express = require('express');
 const { Pool } = require('pg');
-const cors = require('cors');
+const { allowCors } = require('./cors'); // Assuming cors.ts is in the same folder as server.js
 
 const app = express();
 const port = 3000;
@@ -13,10 +13,7 @@ const pool = new Pool({
     port: 5432,
 });
 
-// Import the corsHeaders from the Deno code snippet (assuming you have it in a separate file)
-const { corsHeaders } = require('./cors.ts');
-
-app.use(cors());
+app.use(allowCors); // Add the allowCors middleware before your routes
 app.use(express.json());
 
 app.get('/',(req, res) => {
