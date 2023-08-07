@@ -16,6 +16,10 @@ const pool = new Pool({
 app.use(cors());
 app.use(express.json());
 
+app.get('/',(req, res) => {
+    res.send('Hello Here Server Node JS')
+});
+
 app.post('/api/data', async (req, res) => {
   try {
       const { polygon, startDate, endDate } = req.body.requestData;  // Updated to get startDate and endDate
@@ -23,6 +27,8 @@ app.post('/api/data', async (req, res) => {
           throw new Error('Polygon is required');
       }
       console.log(polygon)
+      console.log(polygon)
+
       const polygonJSON = JSON.parse(polygon);
               
       const coordinates = polygonJSON.geometry.coordinates[0];
