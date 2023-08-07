@@ -13,6 +13,9 @@ const pool = new Pool({
     port: 5432,
 });
 
+// Import the corsHeaders from the Deno code snippet (assuming you have it in a separate file)
+const { corsHeaders } = require('../_shared/cors.ts');
+
 app.use(cors());
 app.use(express.json());
 
